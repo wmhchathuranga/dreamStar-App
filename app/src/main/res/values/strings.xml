@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DreamStar</string>
+    <string name="send_sms">Send SMS</string>
+    <string name="message">Message</string>
+    <string name="mobile_no">Mobile No</string>
+    <string name="mobileno">Mobile_no</string>
+    <string name="message_to_be_sent">Message to be sent</string>
+    <string name="_10">10</string>
+    <string name="count">Count</string>
+    <string name="key">Key</string>
+</resources>
