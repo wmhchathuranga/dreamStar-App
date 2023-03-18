@@ -27,70 +27,41 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtMessage;
     private EditText txtCount;
     private Button btnSms;
-<<<<<<< HEAD
-=======
-    private String key;
-<<<<<<< HEAD
->>>>>>> parent of 103f5a3 (API key added)
-=======
->>>>>>> parent of 103f5a3 (API key added)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_SMS}, PackageManager.PERMISSION_GRANTED);
         ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
-
         txtMobile = (EditText)findViewById(R.id.mblTxt);
         txtMessage = (EditText)findViewById(R.id.msgTxt);
         txtCount = (EditText) findViewById(R.id.msgCount);
         btnSms = (Button)findViewById(R.id.btnSend);
-
         btnSms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 try{
 
-                    SmsManager smgr = SmsManager.getDefault();
-                    int minValue = 5;
-                    int maxValue = 10;
+                    String mobileNumber = txtMobile.getText().toString();
+                    String message = txtMessage.getText().toString();
+                    String count = txtCount.getText().toString();
 
                     HttpFileReader task = new HttpFileReader();
+                    String key = task.execute(mobileNumber,message,count).get();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    for (int i = 0; i < Integer.parseInt(txtCount.getText().toString());i++){
-
-                        smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
-                        Toast.makeText(MainActivity.this, "Sent "+(i+1)+ " Successfully", Toast.LENGTH_SHORT).show();
-                        Random random = new Random();
-                        int randomNumber = random.nextInt(maxValue - minValue + 1) + minValue;
-                        Thread.sleep(randomNumber * 1000);
-
-=======
-=======
->>>>>>> parent of 103f5a3 (API key added)
-                        key = task.execute("https://raw.githubusercontent.com/wmhchathuranga/dreamStar-App/main/API.key").get();
-                        System.out.println("Input keycode : "+key);
-
-                    if(inputKey.equals(key.toString())){
-                        for (int i = 0; i < Integer.parseInt(txtCount.getText().toString());i++){
-                        smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
-                        Toast.makeText(MainActivity.this, "Sent "+i+ " Successfully", Toast.LENGTH_SHORT).show();
-                        Random random = new Random();
-                        int randomNumber = random.nextInt(maxValue - minValue + 1) + minValue;
-                        Thread.sleep(randomNumber * 1000);
-                        }
-                    }
-                    else{
-                        Toast.makeText(MainActivity.this, "Invalid API key!", Toast.LENGTH_SHORT).show();
->>>>>>> parent of 103f5a3 (API key added)
-                    }
-
+//                    System.out.println("Input keycode : "+key);
+//
+//                        for (int i = 0; i < Integer.parseInt(txtCount.getText().toString());i++){
+//
+//                            smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
+//                            Toast.makeText(MainActivity.this, "Sent "+(i+1)+ " Successfully", Toast.LENGTH_SHORT).show();
+//                            Random random = new Random();
+//                            int randomNumber = random.nextInt(maxValue - minValue + 1) + minValue;
+//                            Thread.sleep(randomNumber * 1000);
+//                    }
                 }
                 catch (Exception e){
 //                    Toast.makeText(MainActivity.this, "Insufficient account Balance", Toast.LENGTH_SHORT).show();
@@ -104,23 +75,30 @@ public class MainActivity extends AppCompatActivity {
 }
 
 class HttpFileReader extends AsyncTask<String, Void, String> {
-    protected String doInBackground(String... urls) {
-        String result = "";
+    protected String doInBackground(String... params) {
+
+        String mobileNumber = params[0];
+        String message = params[1];
+        String count = params[2];
+
+        int minValue = 5;
+        int maxValue = 10;
+
+        SmsManager smgr = SmsManager.getDefault();
+
         try {
 
-            for (int i = 0; i < Integer.parseInt(txtCount.getText().toString());i++){
+            for (int i = 0; i < Integer.parseInt(count);i++){
 
-                smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
-                Toast.makeText(MainActivity.this, "Sent "+(i+1)+ " Successfully", Toast.LENGTH_SHORT).show();
-                Random random = new Random();
-                int randomNumber = random.nextInt(maxValue - minValue + 1) + minValue;
-                Thread.sleep(randomNumber * 1000);
+                smgr.sendTextMessage(mobileNumber,null,message,null,null);
+                Thread.sleep( 1000);
 
             }
-        } catch (IOException e) {
+
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return result;
+        return count;
     }
 
     protected void onPostExecute(String result) {
