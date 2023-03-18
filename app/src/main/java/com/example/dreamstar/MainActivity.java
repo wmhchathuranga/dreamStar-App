@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
 <<<<<<< HEAD
 =======
     private String key;
+<<<<<<< HEAD
+>>>>>>> parent of 103f5a3 (API key added)
+=======
 >>>>>>> parent of 103f5a3 (API key added)
 
     @Override
@@ -59,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     HttpFileReader task = new HttpFileReader();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     for (int i = 0; i < Integer.parseInt(txtCount.getText().toString());i++){
 
                         smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
@@ -68,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
                         Thread.sleep(randomNumber * 1000);
 
 =======
+=======
+>>>>>>> parent of 103f5a3 (API key added)
                         key = task.execute("https://raw.githubusercontent.com/wmhchathuranga/dreamStar-App/main/API.key").get();
                         System.out.println("Input keycode : "+key);
 
