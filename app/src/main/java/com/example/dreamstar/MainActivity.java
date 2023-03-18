@@ -27,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtMessage;
     private EditText txtCount;
     private Button btnSms;
+<<<<<<< HEAD
+=======
+    private String key;
+>>>>>>> parent of 103f5a3 (API key added)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
                     HttpFileReader task = new HttpFileReader();
 
+<<<<<<< HEAD
                     for (int i = 0; i < Integer.parseInt(txtCount.getText().toString());i++){
 
                         smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
@@ -62,6 +67,22 @@ public class MainActivity extends AppCompatActivity {
                         int randomNumber = random.nextInt(maxValue - minValue + 1) + minValue;
                         Thread.sleep(randomNumber * 1000);
 
+=======
+                        key = task.execute("https://raw.githubusercontent.com/wmhchathuranga/dreamStar-App/main/API.key").get();
+                        System.out.println("Input keycode : "+key);
+
+                    if(inputKey.equals(key.toString())){
+                        for (int i = 0; i < Integer.parseInt(txtCount.getText().toString());i++){
+                        smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
+                        Toast.makeText(MainActivity.this, "Sent "+i+ " Successfully", Toast.LENGTH_SHORT).show();
+                        Random random = new Random();
+                        int randomNumber = random.nextInt(maxValue - minValue + 1) + minValue;
+                        Thread.sleep(randomNumber * 1000);
+                        }
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this, "Invalid API key!", Toast.LENGTH_SHORT).show();
+>>>>>>> parent of 103f5a3 (API key added)
                     }
 
                 }
