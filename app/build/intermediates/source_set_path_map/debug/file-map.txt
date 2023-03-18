@@ -1,0 +1,12 @@
+com.example.dreamstar.app-support-compat-28.0.0-0 C:\Users\Harshana Chathuranga\.gradle\caches\transforms-3\00ae0264ea64350c0d34b5626db64f0b\transformed\support-compat-28.0.0\res
+com.example.dreamstar.app-coordinatorlayout-28.0.0-1 C:\Users\Harshana Chathuranga\.gradle\caches\transforms-3\0b9fc8d9f154c86a7fc179511600af22\transformed\coordinatorlayout-28.0.0\res
+com.example.dreamstar.app-constraint-layout-2.0.4-2 C:\Users\Harshana Chathuranga\.gradle\caches\transforms-3\873bc7c8a67ebe44879c1aac310b75f0\transformed\constraint-layout-2.0.4\res
+com.example.dreamstar.app-appcompat-v7-28.0.0-3 C:\Users\Harshana Chathuranga\.gradle\caches\transforms-3\f3fb8e121effd5569417956c58bf8b53\transformed\appcompat-v7-28.0.0\res
+com.example.dreamstar.app-pngs-4 C:\xampp\DreamStar\app\build\generated\res\pngs\debug
+com.example.dreamstar.app-resValues-5 C:\xampp\DreamStar\app\build\generated\res\resValues\debug
+com.example.dreamstar.app-rs-6 C:\xampp\DreamStar\app\build\generated\res\rs\debug
+com.example.dreamstar.app-packageDebugResources-7 C:\xampp\DreamStar\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.dreamstar.app-packageDebugResources-8 C:\xampp\DreamStar\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.dreamstar.app-merged_res-9 C:\xampp\DreamStar\app\build\intermediates\merged_res\debug
+com.example.dreamstar.app-debug-10 C:\xampp\DreamStar\app\src\debug\res
+com.example.dreamstar.app-main-11 C:\xampp\DreamStar\app\src\main\res
