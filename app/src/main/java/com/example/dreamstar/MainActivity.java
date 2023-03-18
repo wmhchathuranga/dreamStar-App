@@ -26,52 +26,42 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtMobile;
     private EditText txtMessage;
     private EditText txtCount;
-    private EditText txtKey;
     private Button btnSms;
-    private String key;
-    private int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_SMS}, PackageManager.PERMISSION_GRANTED);
         ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
+
         txtMobile = (EditText)findViewById(R.id.mblTxt);
         txtMessage = (EditText)findViewById(R.id.msgTxt);
         txtCount = (EditText) findViewById(R.id.msgCount);
-        txtKey = (EditText) findViewById(R.id.apiKey);
         btnSms = (Button)findViewById(R.id.btnSend);
+
         btnSms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 try{
+
                     SmsManager smgr = SmsManager.getDefault();
                     int minValue = 5;
                     int maxValue = 10;
-                    String inputKey = txtKey.getText().toString();
-
 
                     HttpFileReader task = new HttpFileReader();
 
-                    key = task.execute("https://raw.githubusercontent.com/wmhchathuranga/dreamStar-App/main/API.key").get();
-                    System.out.println("Input keycode : "+key);
+                    for (int i = 0; i < Integer.parseInt(txtCount.getText().toString());i++){
 
-                    if(inputKey.equals(key.toString())){
-                        for (int i = 0; i < Integer.parseInt(txtCount.getText().toString());i++){
+                        smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
+                        Toast.makeText(MainActivity.this, "Sent "+(i+1)+ " Successfully", Toast.LENGTH_SHORT).show();
+                        Random random = new Random();
+                        int randomNumber = random.nextInt(maxValue - minValue + 1) + minValue;
+                        Thread.sleep(randomNumber * 1000);
 
-                            smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
-                            Toast.makeText(MainActivity.this, "Sent "+(i+1)+ " Successfully", Toast.LENGTH_SHORT).show();
-                            Random random = new Random();
-                            int randomNumber = random.nextInt(maxValue - minValue + 1) + minValue;
-                            Thread.sleep(randomNumber * 1000);
-
-                        }
-                    }
-                    else{
-                        Toast.makeText(MainActivity.this, "Invalid API key!", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -90,16 +80,16 @@ class HttpFileReader extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... urls) {
         String result = "";
         try {
-            URL url = new URL(urls[0]);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.connect();
-            BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String line;
-            while ((line = rd.readLine()) != null) {
-                result += line;
+
+            for (int i = 0; i < Integer.parseInt(txtCount.getText().toString());i++){
+
+                smgr.sendTextMessage(txtMobile.getText().toString(),null,txtMessage.getText().toString(),null,null);
+                Toast.makeText(MainActivity.this, "Sent "+(i+1)+ " Successfully", Toast.LENGTH_SHORT).show();
+                Random random = new Random();
+                int randomNumber = random.nextInt(maxValue - minValue + 1) + minValue;
+                Thread.sleep(randomNumber * 1000);
+
             }
-            connection.disconnect();
         } catch (IOException e) {
             e.printStackTrace();
         }
